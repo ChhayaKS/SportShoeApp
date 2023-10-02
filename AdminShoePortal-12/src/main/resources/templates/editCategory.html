@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Admin Shoes Portal</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Admin Shoes Portal</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/admin}">Welcome Admin</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/admin/products}">Product</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/admin/users}">user</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/admin/categories}">category</a>
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="contaioner">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Update Category</h1>
+				<div class="cart-body">
+					<form th:action="@{/admin/categories/update/{id} {id=${category.id}}}" th:object="${category}"
+						method="post">
+						<input type="hidden" name="id" th:field="*{id}" class="form-control">
+
+						<div class="form-group">
+							<label>category Name</label>
+							<input type="text" name="name" th:field="*{name}" class="form-control"
+								placeholder="enter category name" />
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</html>
